@@ -1,0 +1,19 @@
+function wd {
+  HEX_PROJECT=$1
+
+  echo "WD: $HEX_PROJECT"
+}
+
+function cds {
+  local projdir
+  projdir=${HOME}/git/$HEX_PROJECT
+  cd $projdir/"${@}"
+}
+
+function wdgrep {
+  local olddir pat
+  olddir=$PWD
+  cds
+  git ls-files | xargs grep "${@}"
+  cd $olddir
+}

@@ -1,0 +1,34 @@
+#!/bin/bash
+MODULES_LOC=/opt/ictools/modules
+ACT_MODULES_BASE=/net/reactor/mnt/vessel/devel_installs
+MODULES_VER=3.1.6
+function md 
+{
+  module $@
+  # set up modules prompt
+  if [[ -n ${WD_TOOL_NAME:-} ]]; then
+    export PS1="${bold}${red}[${cyan}$WD_TOOL_NAME${red}]${cyan} (md)\n${BASEPS}"
+  fi
+}
+function setup_modules
+{
+  if [[ -d ${MODULES_LOC}/${MODULES_VER} ]]; then
+    . ${MODULES_LOC}/${MODULES_VER}/init/bash 
+    if [[ -f ~/work/modulefiles/test/lib/bash/Completion.bash ]]; then
+      . ~/work/modulefiles/test/lib/bash/Completion.bash
+    fi
+    module use --append ~/work/modulefiles/test/modulefiles
+  fi
+}
+
+function setup_modules_act
+{
+  actver=$1
+  fn=${ACT_MODULES_BASE}/${actver}/opt/actmodules-${MODULES_VER}/${MODULES_VER} 
+  . ${fn}/init/modules-init
+  if [[ -f ~/work/modulefiles/test/lib/bash/Completion.bash ]]; then
+    . ~/work/modulefiles/test/lib/bash/Completion.bash
+  fi
+}
+
+

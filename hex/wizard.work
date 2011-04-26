@@ -1,0 +1,18 @@
+#!/bin/bash
+# Wizard setup
+export WD_POST_HOOK_SCRIPT=${HOME}/.wizard_post_hook
+# Load wizard
+
+# On debian, I must run wizard off of a local build
+if [[ -d /opt/ictools/wizard ]]; then
+  export WIZARD_ROOT=/opt/ictools/wizard
+else
+  export WIZARD_ROOT=${HOME}/work/wizard/test
+  export WIZARD_CONFIG_PATH=${HOME}/work/wizard_config/test/config/wizard
+fi
+
+if [[ -f $WIZARD_ROOT/bin/wizard ]]
+then
+   . $WIZARD_ROOT/lib/bash/Completion.bash
+   . $WIZARD_ROOT/bin/wizard
+fi

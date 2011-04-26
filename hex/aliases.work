@@ -1,0 +1,9 @@
+# Extremely useful alias for working with codex tests
+#alias cdiff='(cdcr; for i in $(find . -type f | grep "/diff/" | sort); do if [[ -s $i ]]; then clear; less $i; fi; done)'
+
+# Alias to keep make from recursing with BK
+alias gmake='gmake -r'
+alias gm='gmake -r'
+
+# ksh compatibility
+alias print='echo'

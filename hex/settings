@@ -1,0 +1,39 @@
+
+# This seems to solve some aterm problems
+#if [[ $TERM = rxvt ]]; then
+#  export TERM=xterm
+#fi
+
+#commented out erase as it screwed up vim
+stty intr '^C' kill '^U' erase '^?' susp '^Z'
+ulimit -c -S 0 2>&1 >> /dev/null
+
+umask 002	# exclude write permissions
+
+# History setup
+HISTDIR=${HOME}/.hist
+export HISTSIZE=32768
+export HISTFILE=${HISTDIR}/.bash_history
+export CBHISTFILE=${HISTDIR}/.cb_history
+shopt -s histappend
+shopt -u lithist
+export histchars="!^" # ensure that comments are recallable in history
+
+# Ignore files with ~ in them for completion
+export FIGNORE="~"
+export auto_resume=1
+export no_exit_on_failed_exec=1
+export command_oriented_history=1
+export CDPATH=.
+export CVS_EDITOR=vim
+export CVS_RSH=ssh
+export EDITOR=vi
+export PAGER=less
+export LESS=-XR
+export TMOUT=0
+
+
+set -o vi
+set -o ignoreeof
+
+shopt -s no_empty_cmd_completion

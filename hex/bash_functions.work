@@ -1,0 +1,13 @@
+function bcd
+{
+    if [ $# != 1 ]; then
+	echo "Usage: bcd <block>"
+	return 1
+    fi
+    OLDCDPATH=$CDPATH
+    CDPATH=$BLOCKPATH
+    cd $1
+    CDPATH=$OLDCDPATH
+    unset OLDCDPATH
+}
+

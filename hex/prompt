@@ -1,0 +1,42 @@
+#!/bin/bash
+eval `dircolors ${HOME}/.dir_colors`
+
+#########   PROMPT and COLOR SETUP   ######################
+# col       #RGB
+#black=0     #0, 0, 0
+#red=1       #max,0,0
+#green=2     #0,max,0
+#yellow=3    #max,max,0
+#blue=4      #0,0,max
+#magenta=5   #max,0,max
+#cyan=6      #0,max,max
+#white=7     #max,max,max
+
+# I have used solarized to reset stuff!
+# Don't get rid of these \[\] !  These are needed in the PS1 special variable.
+tput=/usr/bin/tput
+bold="\[$($tput bold)\]"
+undl="\[$($tput smul)\]"
+norm="\[$($tput rmso)\]"
+off="\[$($tput sgr0 2>/dev/null)\]"
+HI="\[$($tput smso 2>/dev/null)\]"
+LO="\[$($tput sgr0 2>/dev/null)\]"
+
+for num in 0 1 2 3 4 5 6 7 ; do
+  eval color$num="\\\\[$($tput setaf $num)\\\\]"
+  boldnum=$(($num + 8))
+  #eval color$boldnum="$($tput bold)$($tput setaf $num)"
+  eval color$boldnum="\\\\[$($tput bold)$($tput setaf $num)\\\\]"
+done
+#for num in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15; do
+#  eval color="\$color$num"
+#  echo "$num : ${color}color$num${off}"
+#done
+
+export BASE_PROMPT_COMMAND="history -a;history -c;history -r"
+#export PS1="\[${color2}\]\h\[${color9}\]:\[${off}${color13}\]"'${PWD#${PWD%/*/*/*}/}'"\[${off}\]\n\[${color9}\]>>\[${off}\] " 
+#export PS1="${color2}\h${color9}:${off}${color13}"'${PWD#${PWD%/*/*/*}/}'"${off}\n${color9}>>${off} " 
+export PS1="${color3}\h${color9}:${off}${color13}\w${off}\n${color9}>>${off} " 
+export BASEPS="${PS1}"
+# history prompt command stuff
+PROMPT_COMMAND=${BASE_PROMPT_COMMAND}

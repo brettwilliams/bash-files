@@ -1,0 +1,6 @@
+Basic setup files.
+
+The whole 'hex' module is something I've been using for years -- it attempts to
+cleanly handle when you want different settings between different architectures
+and networks.  Now that we're 100% linux its importance has gone down, but I still
+use different settings at work than at home for some things.

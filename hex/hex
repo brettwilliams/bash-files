@@ -1,0 +1,51 @@
+function guess_hex_site {
+  if [[ -n $(type -p domainname) && $(domainname) == "icbd-pd" ]]; then
+    echo -n work
+  elif [[ -n $(type -p domainname) && $(domainname) == "sdc-npo" ]]; then
+    echo -n work
+  else
+    echo -n home
+  fi
+  return 0
+}
+
+function hex_source {
+  local hexmod file hex_dir hex_site something_sourced i
+  # First ensure we haven't already loaded this module
+  for i in ${HEX_MODULES_LOADED}; do
+    if [[ $1 == $i ]] ; then
+      echo "Warning: hex module $i already loaded, ignored"
+      return 1
+    fi
+  done
+  something_sourced=0
+  # First, check for existence of needed variables
+  hex_dir=${HEX_DIR:-${HOME}/.hex}
+
+  hexmod=${hex_dir}/${1}
+
+  # HEX_SITE may override default logic
+  # Need it exported for make process elsewhere
+  export HEX_SITE=${HEX_SITE:-$(guess_hex_site)}
+
+  # First, load the generic version if it exists
+  if [[ -r ${hexmod} ]] ; then
+    file=${hexmod}
+    . $file
+    something_sourced=1
+  fi
+
+  # Now load site specific settings for the file if it exists
+  # Site specific is later to allow overrides
+  if [[ -n $HEX_SITE && -r ${hexmod}.${HEX_SITE} ]]; then
+    file=${hexmod}.${HEX_SITE}
+    . $file
+    something_sourced=1
+  fi
+  if [[ $something_sourced == "1" ]]; then
+    HEX_MODULES_LOADED="${HEX_MODULES_LOADED:+${HEX_MODULES_LOADED} }${1}"
+  fi
+  return 0
+}
+export -f hex_source
+export -f guess_hex_site

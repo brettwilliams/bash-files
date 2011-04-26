@@ -1,0 +1,37 @@
+#!/bin/bash
+#functions
+function propstr () { 
+  echo -n 'Property ';
+  xprop WM_CLASS | sed 's/.*"\(.*\)", "\(.*\)".*/= "\1,\2" {/g';
+  echo '}'
+}
+
+function sub {
+     ruby -i -pe "gsub($1, \"$2\")" $3
+}
+
+function rv {
+  gvim --remote-silent $1
+}
+
+function sd
+{
+    if [[ $# != 1 ]]; then
+	echo "Sets display."
+	echo "Usage: sd <hostname>"
+	return 1
+    fi
+    export DISPLAY="$1:0.0"
+}
+
+function fn {
+  find . -name $1 
+}
+
+function vn {
+  find . -name $1 -exec vi {} \;
+}
+
+function set_window_title {
+  echo -ne "\"\033]0;${1}\007\""
+}
