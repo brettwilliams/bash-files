@@ -23,6 +23,6 @@ hex_source modules
 hex_source projects
 
 # Automatically set display to NX session if not set
-export DISPLAY=${DISPLAY:-$(\ls -1rt ~/.nx | tail -n 1 | awk 'BEGIN {FS="-"} {print $2":"$3}')}
+export DISPLAY=${DISPLAY:-$(\ls -1rt ~/.nx | grep -v temp | tail -n 1 | awk 'BEGIN {FS="-"} {print $2":"$3}')}
 echo "Hex modules loaded: ${HEX_MODULES_LOADED}"
 echo "<- .bashrc"
