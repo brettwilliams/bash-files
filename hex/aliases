@@ -3,4 +3,4 @@ alias disku="du -hsk * | sort -n | awk '{ print \$2; }' | xargs du -hcs"
 alias ll="ls -l"
 alias ls='command ls --color -bCF'
 alias ll='command ls -bl --color'
-
+alias d='dirs -l -v'

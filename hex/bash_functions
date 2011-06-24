@@ -1,6 +1,6 @@
 #!/bin/bash
 #functions
-function propstr () { 
+function propstr { 
   echo -n 'Property ';
   xprop WM_CLASS | sed 's/.*"\(.*\)", "\(.*\)".*/= "\1,\2" {/g';
   echo '}'
@@ -35,3 +35,16 @@ function vn {
 function set_window_title {
   echo -ne "\"\033]0;${1}\007\""
 }
+
+function pd { 
+  pushd -n $1 > /dev/null && d 
+}
+
+function cd {
+  if [[ "${1}" =~ "-[0-9]+" ]]; then
+    builtin cd $(dirs +${1#-})
+  else
+    builtin cd "${@}"
+  fi
+}
+
