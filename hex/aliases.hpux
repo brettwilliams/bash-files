@@ -1,6 +1,0 @@
-alias vim='TERM=rxvt; vim'
-
-#aliases for ksh compatibility
-alias print=echo
-alias prterr=echo
-

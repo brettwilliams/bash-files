@@ -1,3 +1,0 @@
-alias ls='command ls --color -bCF'
-alias ll='command ls -bl --color'
-
