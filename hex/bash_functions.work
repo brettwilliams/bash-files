@@ -1,0 +1,8 @@
+# become another user to work in their GIANT directory
+# must have their environment set
+giantUser () {
+ export LOGNAME_DIR=$(echo $PWD | perl -pe "s#${GEV_PROJECT_ROOT}/user/##g" | cut -f 1 -d /)
+ export PROJECT_DIR=$(echo $PWD | perl -pe "s#${GEV_PROJECT_ROOT}/user/##g" | cut -f 2 -d /)
+ export DEFAULT_PATH=${GEV_PROJECT_ROOT}/user/${LOGNAME_DIR}/${PROJECT_DIR}/impl
+ export BLOCKPATH=$DEFAULT_PATH
+}
