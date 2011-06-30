@@ -29,7 +29,7 @@ export CVS_EDITOR=vim
 export CVS_RSH=ssh
 export EDITOR=vi
 export PAGER=less
-export LESS=-XR
+export LESS=-XRn
 export TMOUT=0
 
 
