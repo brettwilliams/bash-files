@@ -42,7 +42,7 @@ function pd {
 
 function cd {
   if [[ "${1}" =~ "^-[0-9]+" ]]; then
-    builtin cd $(dirs +${1#-})
+    builtin cd $(dirs -l +${1#-})
   else
     builtin cd "${@}"
   fi
