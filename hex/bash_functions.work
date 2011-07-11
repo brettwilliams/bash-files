@@ -6,3 +6,26 @@ giantUser () {
  export DEFAULT_PATH=${GEV_PROJECT_ROOT}/user/${LOGNAME_DIR}/${PROJECT_DIR}/impl
  export BLOCKPATH=$DEFAULT_PATH
 }
+
+# Get all files of nonzero size in codex results diff directory
+
+function unlock_codex_results {
+  local tloc
+  local mode
+  local orig_dir
+  orig_dir=$(pwd)
+  tloc=${1:-$t}
+  mode=${2:-oversee}
+  platform=${3:---platform rhel_5/x86_64}
+  cdcr -m ${mode} ${platform} ${tloc}
+  #echo "INFO:  Looking for tests in $tloc"
+  nonzfs=$(find . -type f -size +0 -printf "%P\n" | grep "/diff/")
+  cdct ${tloc}
+  for nonzf in ${nonzfs}; do
+    srcf=$(echo $nonzf | sed 's!codex_results/diff!expected_results!g')
+    fco -l $srcf
+  done
+  cdcr -m ${mode} ${platform}
+  codex update_expected -r $PWD -d -w ${tloc}
+  cd "${orig_dir}"
+}
