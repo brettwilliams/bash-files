@@ -37,7 +37,7 @@ function set_window_title {
 }
 
 function pd { 
-  pushd -n $1 > /dev/null && d 
+  pushd -n ${1:-$PWD} > /dev/null && d 
 }
 
 function cd {
