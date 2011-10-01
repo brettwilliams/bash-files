@@ -1,8 +1,8 @@
 #!/bin/bash
 
 rsync_cmd="rsync"
-rsync_cmd="echo rsync"
-rsync_opts="-rtLgpv --delete" 
+#rsync_cmd="echo rsync"
+rsync_opts="-rtLgpva --delete" 
 dstdir_base="/media/HITACHI/StrongbadBackup"
 
 # backup_dirs uses --delete, so this is something that the main
