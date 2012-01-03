@@ -14,7 +14,11 @@ eval `dircolors ${HOME}/.dir_colors`
 
 # I have used solarized to reset stuff!
 # Don't get rid of these \[\] !  These are needed in the PS1 special variable.
-tput=/usr/bin/tput
+if [[ -e /usr/bin/tput ]]; then
+  tput=/usr/bin/tput
+else
+  tput=/bin/tput
+fi
 bold="\[$($tput bold)\]"
 undl="\[$($tput smul)\]"
 norm="\[$($tput rmso)\]"
