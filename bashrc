@@ -16,7 +16,7 @@ hex_source settings
 hex_source aliases
 hex_source bash_functions
 #hex_source bash_completion
-. /etc/bash_completion
+#. /etc/bash_completion
 hex_source prompt
 hex_source wizard
 hex_source modules
