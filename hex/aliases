@@ -4,4 +4,6 @@ alias ll="ls -l"
 alias ls='command ls --color -bCF'
 alias ll='command ls -bl --color'
 alias d='dirs -l -v'
-alias pgrx='pager -A 10 -N --xmpp -s'
+alias xpg='pager -A 10 -N --xmpp -s'
+alias epg='pager -A 10 -N --email -s'
+alias gmake='gmake -s'
