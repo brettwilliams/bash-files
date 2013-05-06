@@ -25,5 +25,6 @@ hex_source projects
 
 # Automatically set display to NX session if not set
 export DISPLAY=${DISPLAY:-$(\ls -1rt ~/.nx | grep -v temp | tail -n 1 | awk 'BEGIN {FS="-"} {print $2":"$3}')}
+#xauth add $(hostname)${DISPLAY}.0 $(xauth list ${DISPLAY} | cut -f 2- -d " ")
 echo "Hex modules loaded: ${HEX_MODULES_LOADED}"
 echo "<- .bashrc"

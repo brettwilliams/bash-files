@@ -1,1 +1,1 @@
-/opt/ictools/bin:${HOME}/bin
+/opt/ictools/da-bin:/opt/ictools/bin:${HOME}/bin

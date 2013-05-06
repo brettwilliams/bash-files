@@ -29,3 +29,7 @@ function unlock_codex_results {
   codex update_expected -r $PWD -d -w ${tloc}
   cd "${orig_dir}"
 }
+function codex_rerun {
+  tests=$(cfail)
+  codex -C run --parallel-job-limit 10 --parallel grid --platform rhel_5/x86_64 $tests; pager -t sh -s "codex done"
+}

@@ -1,0 +1,17 @@
+#.---------------- minute (0 - 59)
+#|  .------------- hour (0 - 23)
+#|  |  .---------- day of month (1 - 31)
+#|  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+#|  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7)  OR sun,mon,tue,wed,thu,fri,sat
+#|  |  |  |  |
+#*  *  *  *  *  command to be executed
+
+# run at 7:00 so I see it during weekly review
+13 07  *  *  1  /opt/ictools/bin/check_git_repos
+
+# run every Sunday, delete all codex runs older than 3 days
+18  4  *  *  0    /net/easystreet/vol/homes/brettw/bin/rm_codex_runs.sh
+
+# run box.com sync every hour
+#15 *  *  *   0-6  /net/easystreet/vol/homes/brettw/bin/box_sync -s
+
