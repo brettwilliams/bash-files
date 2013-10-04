@@ -1,10 +1,17 @@
 # become another user to work in their GIANT directory
 # must have their environment set
 giantUser () {
- export LOGNAME_DIR=$(echo $PWD | perl -pe "s#${GEV_PROJECT_ROOT}/user/##g" | cut -f 1 -d /)
- export PROJECT_DIR=$(echo $PWD | perl -pe "s#${GEV_PROJECT_ROOT}/user/##g" | cut -f 2 -d /)
- export DEFAULT_PATH=${GEV_PROJECT_ROOT}/user/${LOGNAME_DIR}/${PROJECT_DIR}/impl
- export BLOCKPATH=$DEFAULT_PATH
+  echo "PWD: $PWD"
+  export GEV_PROJECT_ROOT="${PWD%%/user*}"
+  echo "GEV_PROJECT_ROOT: $GEV_PROJECT_ROOT"
+  export LOGNAME_DIR=$(echo $PWD | perl -pe "s#${GEV_PROJECT_ROOT}/user/##g" | cut -f 1 -d /)
+  echo "LOGNAME_DIR: $LOGNAME_DIR"
+  export PROJECT_DIR=$(echo $PWD | perl -pe "s#${GEV_PROJECT_ROOT}/user/##g" | cut -f 2 -d /)
+  echo "PROJECT_DIR: $PROJECT_DIR"
+  export DEFAULT_PATH=${GEV_PROJECT_ROOT}/user/${LOGNAME_DIR}/${PROJECT_DIR}/impl
+  export BLOCKPATH=$DEFAULT_PATH
+  export MY_BLOCK=$(echo $PWD | perl -pe "s#${GEV_PROJECT_ROOT}/user/##g" | cut -f 4 -d /)
+  export MY_BLOCK_ROOT=${GEV_PROJECT_ROOT}/user/${LOGNAME_DIR}/${PROJECT_DIR}/impl/$MY_BLOCK
 }
 
 # Get all files of nonzero size in codex results diff directory

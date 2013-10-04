@@ -15,3 +15,5 @@
 # run box.com sync every hour
 #15 *  *  *   0-6  /net/easystreet/vol/homes/brettw/bin/box_sync -s
 
+# run a reminder to update my log every hour, keep up for 60 seconds
+33 7-18 *  *  1-5   /net/easystreet/vol/homes/brettw/bin/xmess "Update worklog" -timeout 60 -nearmouse
