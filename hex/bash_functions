@@ -14,16 +14,6 @@ function rv {
   gvim --remote-silent $1
 }
 
-function sd
-{
-    if [[ $# != 1 ]]; then
-	echo "Sets display."
-	echo "Usage: sd <hostname>"
-	return 1
-    fi
-    export DISPLAY="$1:0.0"
-}
-
 function fn {
   find . -name $1 
 }

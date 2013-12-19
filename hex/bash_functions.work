@@ -40,3 +40,8 @@ function codex_rerun {
   tests=$(cfail)
   codex -C run --parallel-job-limit 10 --parallel grid --platform rhel_5/x86_64 $tests; pager -t sh -s "codex done"
 }
+function fix_display
+{
+  export DISPLAY=$(\ls -1rt ~/.nx | grep -v temp | tail -n 1 | awk 'BEGIN {FS="-"} {print $2":"$3}')
+}
+
