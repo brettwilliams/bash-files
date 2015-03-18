@@ -44,12 +44,15 @@ eval MANPATH=${MANPATH}
 export MANPATH
 
 # Now source the ENV file
-export BASH_ENV=${HOME}/.bashrc
+#export BASH_ENV=${HOME}/.bashrc
 
-if [[ -r $BASH_ENV ]]; then
-   . $BASH_ENV
+if [[ -r ${HOME}/.bashrc ]]; then
+   . ${HOME}/.bashrc
 fi
 
 export PROFILE_RUN=TRUE
+env > /tmp/prof.env
+set > /tmp/prof.set
+echo "${@}" > /tmp/prof.at
 echo "<- bash_profile"
 

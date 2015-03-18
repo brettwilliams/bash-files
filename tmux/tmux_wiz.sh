@@ -14,13 +14,10 @@ else
     echo "INFO: Using custom project file $proj_file"
     tmux source-file $proj_file
   else
-    echo "INFO: Using default project file $proj_file"
-    tmux split-window -v
-    tmux select-pane -t 0
+    echo "INFO: Using default project file"
     tmux send-keys "wd $project; cds" "C-m"
-    tmux resize-pane -D 10
-    tmux select-pane -t 1
-    tmux send-keys "wd $project --WD_CODEX_UPDATE_CODEX_CLONE --WD_CODEX_UPDATE_ACT_CLONE; cds" "C-m"
+    tmux split-window -h
+    tmux send-keys "sleep 10; wd $project; cds" "C-m"
   fi
 fi
 echo "INFO: attaching to $project"

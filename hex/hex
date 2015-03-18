@@ -1,8 +1,6 @@
 function guess_hex_site {
   if [[ -n $(type -p domainname) && $(domainname) == "icbd-pd" ]]; then
     echo -n work
-  elif [[ -n $(type -p domainname) && $(domainname) == "sdc-npo" ]]; then
-    echo -n work
   else
     echo -n home
   fi
@@ -47,5 +45,5 @@ function hex_source {
   fi
   return 0
 }
-export -f hex_source
-export -f guess_hex_site
+#export -f hex_source
+#export -f guess_hex_site

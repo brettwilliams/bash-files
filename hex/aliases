@@ -7,3 +7,5 @@ alias d='dirs -l -v'
 alias xpg='pager -A 10 -N --xmpp -s'
 alias epg='pager -A 10 -N --email -s'
 alias gmake='gmake -s'
+alias killSynergy="kill \$(ps -ef | grep synergys | grep -v grep |  awk '{print \$2}')"
+alias vi=vim

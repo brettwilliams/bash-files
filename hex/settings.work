@@ -1,3 +1,3 @@
 # Set http_proxy (primarily for bitkeeper)
-export http_proxy=http://web-proxy:8088
+#export http_proxy=http://web-proxy:8088
 export LM_PROJECT_LOCAL=da_dc

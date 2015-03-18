@@ -3,9 +3,9 @@ test "${-#*i}" != "$-" || return 0
 echo "-> .bashrc"
 
 # System wide bashrc
-if [[ -f /etc/bashrc ]]; then
-  . /etc/bashrc
-fi
+# if [[ -f /etc/bashrc ]]; then
+#   . /etc/bashrc
+# fi
 # setup hex 
 export HEX_DIR=${HOME}/.hex
 if [[ -r ${HEX_DIR}/hex ]]; then
@@ -24,7 +24,14 @@ hex_source modules
 hex_source projects
 
 # Automatically set display to NX session if not set
-export DISPLAY=${DISPLAY:-$(\ls -1rt ~/.nx | grep -v temp | tail -n 1 | awk 'BEGIN {FS="-"} {print $2":"$3}')}
+#export DISPLAY=${DISPLAY:-$(\ls -1rt ~/.nx | grep -v temp | tail -n 1 | awk 'BEGIN {FS="-"} {print $2":"$3}')}
 #xauth add $(hostname)${DISPLAY}.0 $(xauth list ${DISPLAY} | cut -f 2- -d " ")
 echo "Hex modules loaded: ${HEX_MODULES_LOADED}"
+#if [[ -z "$ALTDISPLAY" && -z "$NXSESSIONID"  && ( $HOSTNAME =~ ^cof ) ]]; then
+if [[ -z "$ALTDISPLAY" && ( $HOSTNAME =~ ^cof ) ]]; then
+  export PS1=">> "
+fi
+# env > /tmp/env
+# set > /tmp/set
+# echo "${@}" > /tmp/at
 echo "<- .bashrc"

@@ -23,7 +23,7 @@ function unlock_codex_results {
   orig_dir=$(pwd)
   tloc=${1:-$t}
   mode=${2:-oversee}
-  platform=${3:---platform rhel_5/x86_64}
+  platform=${3:---platform rhel_6/x86_64}
   cdcr -m ${mode} ${platform} ${tloc}
   #echo "INFO:  Looking for tests in $tloc"
   nonzfs=$(find . -type f -size +0 -printf "%P\n" | grep "/diff/")
@@ -31,6 +31,9 @@ function unlock_codex_results {
   for nonzf in ${nonzfs}; do
     srcf=$(echo $nonzf | sed 's!codex_results/diff!expected_results!g')
     fco -l $srcf
+    if [[ -e $srcf.remember ]]; then
+      fco -l $srcf.remember
+    fi
   done
   cdcr -m ${mode} ${platform}
   codex update_expected -r $PWD -d -w ${tloc}
@@ -38,10 +41,10 @@ function unlock_codex_results {
 }
 function codex_rerun {
   tests=$(cfail)
-  codex -C run --parallel-job-limit 10 --parallel grid --platform rhel_5/x86_64 $tests; pager -t sh -s "codex done"
+  codex -C run --parallel-job-limit 10 --parallel grid --platform rhel_6/x86_64 $tests; pager -t sh -s "codex done"
 }
 function fix_display
 {
-  export DISPLAY=$(\ls -1rt ~/.nx | grep -v temp | tail -n 1 | awk 'BEGIN {FS="-"} {print $2":"$3}')
+  export DISPLAY=$(\ls -1rt ~/.nx | grep -v temp | grep -v cache | tail -n 1 | awk 'BEGIN {FS="-"} {print $2":"$3}')
 }
 
