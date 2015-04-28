@@ -1,4 +1,5 @@
 umask 002
+#. ~/.set_display
 test "${-#*i}" != "$-" || return 0
 echo "-> .bashrc"
 
@@ -31,7 +32,4 @@ echo "Hex modules loaded: ${HEX_MODULES_LOADED}"
 if [[ -z "$ALTDISPLAY" && ( $HOSTNAME =~ ^cof ) ]]; then
   export PS1=">> "
 fi
-# env > /tmp/env
-# set > /tmp/set
-# echo "${@}" > /tmp/at
 echo "<- .bashrc"

@@ -1,5 +1,5 @@
 #!/bin/bash
-if [[ $TERM == screen.rxvt ]]; then
+if [[ $TERM == screen ]]; then
   export IN_SCREEN=1
   export TERM=rxvt
 fi
@@ -42,12 +42,8 @@ done
 #done
 
 export BASE_PROMPT_COMMAND="history -a;history -c;history -r"
-#export PS1="\[${color2}\]\h\[${color9}\]:\[${off}${color13}\]"'${PWD#${PWD%/*/*/*}/}'"\[${off}\]\n\[${color9}\]>>\[${off}\] " 
-#export PS1="${color2}\h${color9}:${off}${color13}"'${PWD#${PWD%/*/*/*}/}'"${off}\n${color9}>>${off} " 
-export PS1="${color3}\h${color9}:${off}${color13}\w${off}\n${color9}>>${off} " 
-# if [[ -n $STY ]]; then
-#   export PS1="[\$STY]$PS1"
-# fi
+# old mrxvt stuff export PS1="${color3}\h${color9}:${off}${color13}\w${off}\n${color9}>>${off} " 
+export PS1="${color12}\h${color9}:${off}${color6}\w${off}\n${color9}>>${off} " 
 export BASEPS="${PS1}"
 # history prompt command stuff
 PROMPT_COMMAND=${BASE_PROMPT_COMMAND}

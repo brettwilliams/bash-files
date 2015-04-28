@@ -45,6 +45,6 @@ function codex_rerun {
 }
 function fix_display
 {
-  export DISPLAY=$(\ls -1rt ~/.nx | grep -v temp | grep -v cache | tail -n 1 | awk 'BEGIN {FS="-"} {print $2":"$3}')
+  . ~/.set_display
 }
 
