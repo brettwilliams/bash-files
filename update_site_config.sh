@@ -13,7 +13,7 @@ cd
 rsync_files=".ag_user_info .pager.ini .gitconfig"
 for f in $rsync_files; do
   if [[ ! -f $f ]]; then
-    echo scp brettw@darkshore.ftc.avagotech.net://net/easystreet/vol/homes/brettw/$f .
+    scp brettw@darkshore.ftc.avagotech.net://net/easystreet/vol/homes/brettw/$f .
   fi
 done
 
@@ -42,7 +42,7 @@ idx=0
 for src_file in ${link_srcs[*]}; do
   dst_file=${link_dsts[$idx]}
   if [[ ! -e $dst_file || $(readlink $dst_file) != $src_file ]]; then
-    echo ln -sf $src_file $dst_file
+    ln -sf $src_file $dst_file
   fi
   idx=$(( $idx + 1 ))
 done
@@ -51,6 +51,14 @@ done
 dirs_to_create=".hist .vimtmp tmp"
 for d in $dirs_to_create; do
   if [[ ! -d $d ]]; then
-    echo mkdir -p $d
+    mkdir -p $d
   fi
 done
+
+# Update vim stuff
+if [[ ! -d .vim/bundle ]]; then
+  cd .vim
+  mkdir bundle
+  ./update_vim_files.rb
+  cd -
+fi
