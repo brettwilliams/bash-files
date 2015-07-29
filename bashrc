@@ -3,6 +3,10 @@ umask 002
 test "${-#*i}" != "$-" || return 0
 echo "-> .bashrc"
 
+# Load completion function
+if [ -r /opt/ictools/bash-completion/bash_completion_loader.sh ]; then
+  . /opt/ictools/bash-completion/bash_completion_loader.sh
+fi
 # System wide bashrc
 # if [[ -f /etc/bashrc ]]; then
 #   . /etc/bashrc
