@@ -28,8 +28,8 @@ links[github/bash-files/path.pre]=.path.pre
 
 for src_file in "${!links[@]}"; do
   dst_file=${links[$src_file]}
-  if [[ ! -e $dst_file ]]; then
-    echo "ln -s $src_file "
+  if [[ ! -e $dst_file || $(readlink $dst_file) != $src_file ]]; then
+    echo ln -sf $src_file $dst_file
   fi
 done
 
