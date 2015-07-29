@@ -17,20 +17,34 @@ for f in $rsync_files; do
   fi
 done
 
-declare -A links
-links[github/bash-files/hex]=.hex
-links[github/bash-files/bashrc]=.bashrc
-links[github/bash-files/bash_profile]=.bash_profile
-links[github/bash-files/dir_colors]=.dir_colors
-links[github/vim-files/vimrc]=.vimrc
-links[github/vim-files]=.vim
-links[github/bash-files/path.pre]=.path.pre
+# Don't let these get out of sync!
+link_srcs=(
+github/bash-files/hex
+github/bash-files/bashrc
+github/bash-files/bash_profile
+github/bash-files/dir_colors
+github/vim-files/vimrc
+github/vim-files
+github/bash-files/path.pre
+)
 
-for src_file in "${!links[@]}"; do
-  dst_file=${links[$src_file]}
+link_dsts=(
+.hex
+.bashrc
+.bash_profile
+.dir_colors
+.vimrc
+.vim
+.path.pre
+)
+
+idx=0
+for src_file in ${link_srcs[*]}; do
+  dst_file=${link_dsts[$idx]}
   if [[ ! -e $dst_file || $(readlink $dst_file) != $src_file ]]; then
     echo ln -sf $src_file $dst_file
   fi
+  idx=$(( $idx + 1 ))
 done
 
 
