@@ -10,10 +10,10 @@ cd
 # fi
 
 # Files that just need to be rsynced
-rsync_files=".ag_user_info .pager.ini .gitconfig .wizardrc .wizard_post_hook"
+rsync_files=".ssh .ag_user_info .pager.ini .gitconfig .wizardrc .wizard_post_hook"
 for f in $rsync_files; do
   if [[ ! -f $f ]]; then
-    scp brettw@darkshore.ftc.avagotech.net://net/easystreet/vol/homes/brettw/$f .
+    rsync -a -e ssh brettw@darkshore.ftc.avagotech.net://net/easystreet/vol/homes/brettw/$f .
   fi
 done
 
