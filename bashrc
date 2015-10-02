@@ -37,3 +37,18 @@ if [[ -z "$ALTDISPLAY" && ( $HOSTNAME =~ ^cof ) ]]; then
   export PS1=">> "
 fi
 echo "<- .bashrc"
+# USER CODE MUST BE ENTERED ABOVE THIS LINE!
+# ICDS-POST-BEGIN - DO NOT EDIT THIS SECTION
+# Includes icds builtins - bashrc.poststub
+#
+#
+if [ -n "$ICDS_LAUNCH_MODE" ]
+then
+    if [ -s $ICDS_SYS/sh/bashrc.cmd ]
+    then
+        . $ICDS_SYS/sh/bashrc.cmd
+    fi
+fi
+#
+# ICDS-POST-END - end ICDS section
+#

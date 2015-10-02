@@ -1,5 +1,5 @@
 function guess_hex_site {
-  if [[ -n $(type -p domainname) && $(domainname) == "icbd-pd" ]]; then
+  if [[ -d /opt/ictools ]]; then 
     echo -n work
   else
     echo -n home
