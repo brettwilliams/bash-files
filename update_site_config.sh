@@ -20,6 +20,7 @@ for git_dir in ${git_dirs[*]}; do
   cd $git_dir
   git pull
 done
+cd $HOME
 # Files that just need to be rsynced
 rsync_files=".ssh .ag_user_info .pager.ini .gitconfig .wizardrc .wizard_post_hook .vnc"
 for f in $rsync_files; do
@@ -37,6 +38,7 @@ github/bash-files/dir_colors
 github/vim-files/vimrc
 github/vim-files
 github/bash-files/path.pre
+github/fluxbox-files
 )
 
 link_dsts=(
@@ -47,6 +49,7 @@ link_dsts=(
 .vimrc
 .vim
 .path.pre
+.fluxbox
 )
 
 idx=0
@@ -69,7 +72,7 @@ done
 # Update vim stuff
 if [[ ! -d .vim/bundle ]]; then
   cd .vim
-  mkdir bundle
+  mkdir -p bundle
   ./update_vim_files.rb
   cd -
 fi
