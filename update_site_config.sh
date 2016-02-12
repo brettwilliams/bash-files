@@ -2,6 +2,18 @@
 # First, everything is in home directory, cd to it
 cd
 
+# Update this script!  If no argument given, just update here and exec
+# self with an argument
+if [[ -z "$1" ]]; then
+  echo "INFO:  first time, update the update!"
+  cd $HOME/github/bash-files
+  git pull
+  cd $HOME
+  echo "INFO: execing self"
+  exec $HOME/github/bash-files doit
+fi
+echo "INFO: actually doing the sync"
+
 # SSH keys must be correct.  Sync up if it doesn't look right
 # if [[ ! -d .ssh || $(md5sum .ssh/id_rsa.pub | awk '{print $1}') != "ac9a00ee80b3a473f5db8d62ee00ea61" ]]; then
 #   echo "INFO: Redoing your .ssh directory, it does not look correct"
