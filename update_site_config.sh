@@ -9,12 +9,23 @@ cd
 #   rsync -az -e ssh darkshore.ftc.avagotech.net:/net/easystreet/vol/homes/brettw/.ssh .
 # fi
 
+git_dirs=(
+$HOME/github/bash-files
+$HOME/github/fluxbox-files
+$HOME/github/vim-files
+)
+# $HOME/github/config-files
+
+for git_dir in ${git_dirs[*]}; do
+  cd $git_dir
+  git pull
+done
 # Files that just need to be rsynced
 rsync_files=".ssh .ag_user_info .pager.ini .gitconfig .wizardrc .wizard_post_hook .vnc"
 for f in $rsync_files; do
-  if [[ ! -f $f ]]; then
+#  if [[ ! -f $f ]]; then
     rsync -a -e ssh brettw@darkshore.ftc.avagotech.net://net/easystreet/vol/homes/brettw/$f .
-  fi
+#  fi
 done
 
 # Don't let these get out of sync!
