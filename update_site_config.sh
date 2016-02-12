@@ -10,7 +10,7 @@ if [[ -z "$1" ]]; then
   git pull
   cd $HOME
   echo "INFO: execing self"
-  exec $HOME/github/bash-files doit
+  exec $HOME/github/bash-files/update_site_config.sh doit
 fi
 echo "INFO: actually doing the sync"
 
