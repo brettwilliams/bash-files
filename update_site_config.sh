@@ -10,7 +10,7 @@ cd
 # fi
 
 # Files that just need to be rsynced
-rsync_files=".ssh .ag_user_info .pager.ini .gitconfig .wizardrc .wizard_post_hook"
+rsync_files=".ssh .ag_user_info .pager.ini .gitconfig .wizardrc .wizard_post_hook .vnc"
 for f in $rsync_files; do
   if [[ ! -f $f ]]; then
     rsync -a -e ssh brettw@darkshore.ftc.avagotech.net://net/easystreet/vol/homes/brettw/$f .
