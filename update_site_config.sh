@@ -28,7 +28,7 @@ done
 cd $HOME
 
 # Files that just need to be rsynced
-rsync_files=".ssh .ag_user_info .pager.ini .gitconfig .wizardrc .wizard_post_hook .vnc"
+rsync_files=".ssh .ag_user_info .pager.ini .gitconfig .wizardrc .wizard_post_hook .vnc .synopsys_icc2.setup"
 for f in $rsync_files; do
   rsync -a -e ssh brettw@darkshore.ftc:/home/brettw/$f .
 done
