@@ -28,10 +28,15 @@ done
 cd $HOME
 
 # Files that just need to be rsynced
-rsync_files=".ssh .ag_user_info .pager.ini .gitconfig .wizardrc .wizard_post_hook .vnc .synopsys_icc2.setup"
+rsync_files=".ssh .ag_user_info .pager.ini .gitconfig .wizardrc .wizard_post_hook .vnc .synopsys_icc2.setup bin"
 for f in $rsync_files; do
   rsync -a -e ssh brettw@darkshore.ftc:/home/brettw/$f .
 done
+
+# Gnome terminal settings.  Be careful
+mkdir -p .gconf/apps
+rsync -a -e ssh brettw@darkshore.ftc:/home/brettw/.gconf/apps/gnome-terminal .gconf/apps
+
 
 # Don't let these get out of sync!
 link_srcs=(
