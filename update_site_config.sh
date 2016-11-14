@@ -48,6 +48,8 @@ github/vim-files/vimrc
 github/vim-files
 github/bash-files/path.pre
 github/fluxbox-files
+github/bash-files/tmux
+github/bash-files/tmux/tmux.conf
 )
 
 link_dsts=(
@@ -59,6 +61,8 @@ link_dsts=(
 .vim
 .path.pre
 .fluxbox
+.tmux
+.tmux.conf
 )
 
 idx=0
