@@ -1,0 +1,18 @@
+completion_files="/usr/local/etc/bash_completion.d/tmuxinator"
+for f in $completion_files; do
+  if [[ -e $f ]]; then
+    . $f
+  fi
+done
+
+# tmwd completion
+_tmwd()
+{
+  local cur=${COMP_WORDS[COMP_CWORD]}
+  COMPREPLY=( $(compgen -W "$($HOME/bin/tmls)" -- $cur) )
+}
+complete -F _tmwd tmwd
+# Load completion function
+if [ -r /opt/ictools/bash-completion/bash_completion_loader.sh ]; then
+  . /opt/ictools/bash-completion/bash_completion_loader.sh
+fi

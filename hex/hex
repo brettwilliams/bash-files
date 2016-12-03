@@ -7,6 +7,15 @@ function guess_hex_site {
   return 0
 }
 
+function guess_hex_arch {
+  if [[ -d /Library ]]; then 
+    echo -n osx
+  else
+    echo -n linux
+  fi
+  return 0
+}
+
 function hex_source {
   local hexmod file hex_dir hex_site something_sourced i
   # First ensure we haven't already loaded this module
@@ -25,6 +34,7 @@ function hex_source {
   # HEX_SITE may override default logic
   # Need it exported for make process elsewhere
   export HEX_SITE=${HEX_SITE:-$(guess_hex_site)}
+  export HEX_ARCH=${HEX_ARCH:-$(guess_hex_arch)}
 
   # First, load the generic version if it exists
   if [[ -r ${hexmod} ]] ; then
@@ -40,6 +50,14 @@ function hex_source {
     . $file
     something_sourced=1
   fi
+
+  # Now load architecture/machine specific settings for the file if it exists
+  if [[ -n $HEX_ARCH && -r ${hexmod}.${HEX_ARCH} ]]; then
+    file=${hexmod}.${HEX_ARCH}
+    . $file
+    something_sourced=1
+  fi
+
   if [[ $something_sourced == "1" ]]; then
     HEX_MODULES_LOADED="${HEX_MODULES_LOADED:+${HEX_MODULES_LOADED} }${1}"
   fi
@@ -47,3 +65,4 @@ function hex_source {
 }
 #export -f hex_source
 #export -f guess_hex_site
+# vim:ft=sh

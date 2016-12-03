@@ -1,0 +1,2 @@
+alias ll='command ls -blG'
+alias ls='command ls -G -bCF'

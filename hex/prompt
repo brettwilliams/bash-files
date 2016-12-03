@@ -1,9 +1,11 @@
 #!/bin/bash
-if [[ $TERM == screen ]]; then
-  export IN_SCREEN=1
-  export TERM=rxvt
+# if [[ $TERM == screen ]]; then
+#   export IN_SCREEN=1
+#   export TERM=rxvt
+# fi
+if [[ -n "$(which dircolors)" ]]; then
+  eval `dircolors ${HOME}/.dir_colors`
 fi
-eval `dircolors ${HOME}/.dir_colors`
 
 #########   PROMPT and COLOR SETUP   ######################
 # col       #RGB

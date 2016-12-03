@@ -1,6 +1,0 @@
-_tmwd()
-{
-  local cur=${COMP_WORDS[COMP_CWORD]}
-  COMPREPLY=( $(compgen -W "$($HOME/bin/tmls)" -- $cur) )
-}
-complete -F _tmwd tmwd

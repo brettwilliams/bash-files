@@ -1,9 +1,4 @@
 
-# This seems to solve some aterm problems
-#if [[ $TERM = rxvt ]]; then
-#  export TERM=xterm
-#fi
-
 #commented out erase as it screwed up vim
 stty intr '^C' kill '^U' erase '^?' susp '^Z'
 ulimit -c -S 0 2>&1 >> /dev/null
