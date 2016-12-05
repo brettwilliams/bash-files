@@ -36,6 +36,7 @@ TERM color-xterm
 TERM vt100
 TERM dtterm
 TERM color_xterm
+TERM screen-256color
 
 # EIGHTBIT, followed by '1' for on, '0' for off. (8-bit output)
 EIGHTBIT 1
