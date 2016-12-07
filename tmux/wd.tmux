@@ -1,1 +1,1 @@
-split-window -h -l 25
+split-window -h -p 30
