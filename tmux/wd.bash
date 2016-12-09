@@ -1,7 +1,7 @@
 tmux select-pane -L
 tmux send-keys "wd ${*}; cds" C-m
+tmux rename-window "${1}->$(hostname)"
 tmux select-pane -R
-tmux rename-window "${*}"
 if [[ $HEX_ARCH == "osx" ]]; then
   tmux send-keys "wd ${*}; cds" C-m
   tmux new-window 
