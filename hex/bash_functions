@@ -38,3 +38,6 @@ function cd {
   fi
 }
 
+function vman {
+  man $1 | col -b | vim -c 'set ft=man' -c 'set nomod' -
+}
