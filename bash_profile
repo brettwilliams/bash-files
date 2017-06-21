@@ -50,11 +50,6 @@ if [[ -r ${HOME}/.bashrc ]]; then
    . ${HOME}/.bashrc
 fi
 
-export PROFILE_RUN=TRUE
-env > /tmp/prof.env
-set > /tmp/prof.set
-echo "${@}" > /tmp/prof.at
 echo "<- bash_profile"
 
 
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
