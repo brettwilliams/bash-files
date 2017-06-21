@@ -51,5 +51,3 @@ if [[ -r ${HOME}/.bashrc ]]; then
 fi
 
 echo "<- bash_profile"
-
-
