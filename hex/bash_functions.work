@@ -48,3 +48,12 @@ function fix_display
   . ~/.set_display
 }
 
+function cdlib {
+  local icp=${1:-7}
+  case $icp in
+    16c) cd /lab/libraries/avago/digital/cln16ffc ;;
+    16)  cd /lab/libraries/avago/digital/cln16ffp ;;
+    7)   cd /lab/libraries/avago/digital/cln07ff ;;
+    28)  cd /lab/libraries/avago/digital/cln28hpm ;;
+  esac
+}
