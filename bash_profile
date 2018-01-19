@@ -50,8 +50,4 @@ if [[ -r ${HOME}/.bashrc ]]; then
    . ${HOME}/.bashrc
 fi
 
-export PROFILE_RUN=TRUE
-env > /tmp/prof.env
-set > /tmp/prof.set
-echo "${@}" > /tmp/prof.at
 echo "<- bash_profile"
