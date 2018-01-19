@@ -45,6 +45,7 @@ then
         . $ICDS_SYS/sh/bashrc.cmd
     fi
 fi
+#export DISPLAY=${HOSTNAME}:2
 #
 # ICDS-POST-END - end ICDS section
 #
