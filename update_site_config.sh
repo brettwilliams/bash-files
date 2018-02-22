@@ -2,6 +2,7 @@
 # First, everything is in home directory, cd to it
 cd $HOME || exit 1
 
+export PATH=/tools/ictools/bin:$PATH
 # Update this script!  If no argument given, just update here and exec
 # self with an argument
 if [[ -z "$1" ]]; then
