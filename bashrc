@@ -25,9 +25,8 @@ if [[ -r ${HEX_DIR}/hex ]]; then
 fi
 
 # Set display based on the domain, using just default IT supported VDI servers
-dn=$(type dnsdomainname)
-if [[ -n $dn ]]; then
-    vdi=$(curl --silent "http://unixrnd.sjs.avagotech.net/tools/vdi/util.php?action=getuser_client&userid=$LOGNAME" | grep host= | cut -f 2 -d = | cut -f 1 -d '|' | sort -u | grep $dn | tail -n 1)
+if [[ -n "$(type dnsdomainname)" ]]; then
+    vdi=$(curl --silent "http://unixrnd.sjs.avagotech.net/tools/vdi/util.php?action=getuser_client&userid=$LOGNAME" | grep host= | cut -f 2 -d = | cut -f 1 -d '|' | sort -u | grep $(dnsdomainname) | tail -n 1)
     export DISPLAY=$vdi:1
 fi
 
