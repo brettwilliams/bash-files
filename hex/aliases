@@ -3,4 +3,8 @@ alias disku="du -hsk * | sort -n | awk '{ print \$2; }' | xargs du -hcs"
 alias ll="ls -l"
 alias d='dirs -l -v'
 alias gmake='gmake -s'
-alias vi=vim
+if [[ $HOSTNAME =~ darh.* ]]; then
+    alias vi=/usr/bin/vim
+else
+    alias vi=vim
+fi

@@ -24,14 +24,13 @@ if [[ -r ${HEX_DIR}/hex ]]; then
   echo "Hex modules loaded: ${HEX_MODULES_LOADED}"
 fi
 
-
-# Automatically set display to NX session if not set
-#export DISPLAY=${DISPLAY:-$(\ls -1rt ~/.nx | grep -v temp | tail -n 1 | awk 'BEGIN {FS="-"} {print $2":"$3}')}
-#xauth add $(hostname)${DISPLAY}.0 $(xauth list ${DISPLAY} | cut -f 2- -d " ")
-#if [[ -z "$ALTDISPLAY" && -z "$NXSESSIONID"  && ( $HOSTNAME =~ ^cof ) ]]; then
-if [[ -z "$ALTDISPLAY" && ( $HOSTNAME =~ ^cof ) ]]; then
-  export PS1=">> "
+# Set display based on the domain, using just default IT supported VDI servers
+dn=$(type dnsdomainname)
+if [[ -n $dn ]]; then
+    vdi=$(curl --silent "http://unixrnd.sjs.avagotech.net/tools/vdi/util.php?action=getuser_client&userid=$LOGNAME" | grep host= | cut -f 2 -d = | cut -f 1 -d '|' | sort -u | grep $dn | tail -n 1)
+    export DISPLAY=$vdi:1
 fi
+
 echo "<- .bashrc"
 # USER CODE MUST BE ENTERED ABOVE THIS LINE!
 # ICDS-POST-BEGIN - DO NOT EDIT THIS SECTION

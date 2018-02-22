@@ -54,6 +54,7 @@ function cdlib {
     16c) cd /lab/libraries/avago/digital/cln16ffc ;;
     16)  cd /lab/libraries/avago/digital/cln16ffp ;;
     7)   cd /lab/libraries/avago/digital/cln07ff ;;
+    7p)  cd /lab/libraries/avago/digital/cln07ffp ;;
     28)  cd /lab/libraries/avago/digital/cln28hpm ;;
   esac
 }
