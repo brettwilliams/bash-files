@@ -58,3 +58,10 @@ function cdlib {
     28)  cd /lab/libraries/avago/digital/cln28hpm ;;
   esac
 }
+
+function RM {
+  local rm_dir="TO_BE_REMOVED_$(date +%Y%m%d%M%S%N)"
+  mkdir $rm_dir
+  mv "${@}" $rm_dir
+  rm -rf $rm_dir &
+}
